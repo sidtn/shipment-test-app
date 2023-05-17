@@ -1,0 +1,22 @@
+[
+{
+    "model": "shipments.address",
+    "pk": "04b89654-a9d4-42b0-97cc-ec5d60f95a02",
+    "fields": {
+        "state": "Tennessee",
+        "city": "East Michaelview",
+        "street": "6448 Knight Hollow",
+        "zip": "19209"
+    }
+},
+{
+    "model": "shipments.address",
+    "pk": "1fdda881-6551-419d-9018-57915091ceb0",
+    "fields": {
+        "state": "Kentucky",
+        "city": "Christophershire",
+        "street": "2252 Denise Neck",
+        "zip": "15135"
+    }
+}
+]

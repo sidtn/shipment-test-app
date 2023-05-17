@@ -1,0 +1,7 @@
+Django==4.2.1
+django-environ==0.10.0
+djangorestframework==3.14.0
+django-cors-headers==3.14.0
+Faker==18.7.0
+psycopg2==2.9.6
+django-fsm==2.8.1

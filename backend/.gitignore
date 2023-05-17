@@ -1,0 +1,4 @@
+venv
+docker_data
+__pycache__/
+.idea

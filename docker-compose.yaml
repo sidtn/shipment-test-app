@@ -1,0 +1,49 @@
+version: '3.9'
+services:
+  db:
+    image: postgres
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres -d shipments"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+    environment:
+      POSTGRES_DB: shipments
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    expose:
+      - 5432
+    volumes:
+      - ./pg_data:/docker-entrypoint-initdb.d
+    networks:
+      - db-net
+
+  api:
+    build:
+      context: ./backend
+    environment:
+      DATABASE_URL: "postgresql://postgres:postgres@db:5432/shipments"
+    ports:
+      - "8002:8002"
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - db-net
+
+  app:
+    build:
+      context: ./frontend
+    environment:
+      REACT_APP_API_URL: "http://localhost:8002/api/v1"
+    ports:
+      - "3030:3000"
+    depends_on:
+      - api
+    networks:
+      - db-net
+
+
+networks:
+  db-net:
+    driver: bridge

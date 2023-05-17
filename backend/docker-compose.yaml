@@ -1,0 +1,12 @@
+version: "3.9"
+services:
+  postgres:
+    image: postgres
+    environment:
+      POSTGRES_DB: shipments
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+    volumes:
+      - ./docker_data/pg_data:/docker-entrypoint-initdb.d
+    ports:
+      - "5433:5432"
